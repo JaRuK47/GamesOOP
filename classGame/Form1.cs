@@ -2,7 +2,7 @@ namespace classGame
 {
     public partial class Form1 : Form
     {
-        List<Gadgets> gadgetsList = new List<Gadgets>();
+        List<Gadget> gadgetsList = new List<Gadget>();
         public Form1()
         {
             InitializeComponent();
@@ -18,13 +18,13 @@ namespace classGame
                 switch (rnd.Next() % 3)
                 {
                     case 0:
-                        this.gadgetsList.Add(Laptops.Generate());
+                        this.gadgetsList.Add(Laptop.Generate());
                         break;
                     case 1:
-                        this.gadgetsList.Add(Tablets.Generate());
+                        this.gadgetsList.Add(Tablet.Generate());
                         break;
                     case 2:
-                        this.gadgetsList.Add(Smartphones.Generate());
+                        this.gadgetsList.Add(Smartphone.Generate());
                         break;
                 }
             }
@@ -38,15 +38,15 @@ namespace classGame
 
             foreach (var gadget in this.gadgetsList)
             {
-                if (gadget is Laptops)
+                if (gadget is Laptop)
                 {
                     laptopsCount += 1;
                 }
-                else if (gadget is Tablets)
+                else if (gadget is Tablet)
                 {
                     tabletsCount += 1;
                 }
-                else if (gadget is Smartphones)
+                else if (gadget is Smartphone)
                 {
                     smartphonesCount += 1;
                 }

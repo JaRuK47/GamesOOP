@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace classGame
 {
-    public class Laptops : Gadgets
+    public class Gadget
+    {
+        public static Random rnd = new Random();
+        public int Price = 100;
+        public virtual String GetInfo()
+        {
+            var str = String.Format("\nЦена: {0}", this.Price);
+            return str;
+        }
+    }
+
+    public class Laptop : Gadget
     {
         public int Cores = 1;
         public bool Backlight = true; 
@@ -22,9 +33,9 @@ namespace classGame
             return str;
         }
 
-        public static Laptops Generate()
+        public static Laptop Generate()
         {
-            return new Laptops
+            return new Laptop
             {
                 Cores = rnd.Next() % 20 + 1,
                 Backlight = rnd.Next() % 2 == 0,
@@ -34,7 +45,7 @@ namespace classGame
         }
     }
 
-    public class Tablets : Gadgets
+    public class Tablet : Gadget
     {
         public int ScreenDpi = 50;
         public bool Ccamera = true;
@@ -49,9 +60,9 @@ namespace classGame
             return str;
         }
 
-        public static Tablets Generate()
+        public static Tablet Generate()
         {
-            return new Tablets
+            return new Tablet
             {
                 ScreenDpi = rnd.Next() % 50 + 1,
                 Ccamera = rnd.Next() % 2 == 0,
@@ -60,7 +71,7 @@ namespace classGame
         }
     }
 
-    public class Smartphones : Gadgets
+    public class Smartphone : Gadget
     {
         public int SimCard = 1;
         public int Battery = 1;
@@ -77,26 +88,15 @@ namespace classGame
             return str;
         }
 
-        public static Smartphones Generate()
+        public static Smartphone Generate()
         {
-            return new Smartphones
+            return new Smartphone
             {
                 SimCard = rnd.Next() % 2 + 1,
                 Battery = rnd.Next() % 100 + 1,
                 MegapixelsCamera = rnd.Next() % 100 + 1,
                 Price = rnd.Next() % 1000 + 500
             };
-        }
-    }
-
-    public class Gadgets
-    {
-        public static Random rnd = new Random();
-        public int Price = 100;
-        public virtual String GetInfo()
-        {
-            var str = String.Format("\nЦена: {0}", this.Price);
-            return str;
         }
     }
 }
